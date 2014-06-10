@@ -1,0 +1,10 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  a(href='/buildings/new') New Building
+
+  ul
+    each building in buildings
+      li= building.name

@@ -1,0 +1,12 @@
+extends ../shared/template
+
+block content
+  form(action='/login', method='post')
+    input(name='email', required='required', type='text', placeholder='myemail@email.com')
+    input(name='password', required='required', type='password', placeholder='eg. X8df!90EO')
+    button Login
+
+  form(action='/users', method='post')
+    input(name='email', required='required', type='text', placeholder='myemail@email.com')
+    input(name='password', required='required', type='password', placeholder='eg. X8df!90EO')
+    button Register

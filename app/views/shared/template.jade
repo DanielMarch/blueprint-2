@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title= title
+    link(href='/less/app.css', rel='stylesheet')
+  body
+    nav
+      if(!user)
+        a(href='/login') Login
+      if(user)
+        a(href='/logout') Logout
+        a(href='/locations') Locations
+        a(href='/buildings') Buildings
+        a(href='/buildings/new') New Building
+        a(href='/floors') Floors
+    block content
+
+    script(src='/js/vendor/jquery-2.1.1.js')
+    script(src='/js/vendor/lodash-2.4.1.js')
+    script(src='/js/vendor/moment-2.6.0.js')
+    script(src='/js/vendor/traceur.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/es5/main.js')
+    script(src='/js/es6/compiled/main.js')
+    script(src='/js/es6/compiled/sockets.js')
+
+    block scripts

@@ -1,0 +1,10 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  a(href='/locations/new') New Location
+
+  ul
+    each location in locations
+      li= location.name

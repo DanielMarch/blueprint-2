@@ -1,0 +1,36 @@
+extends ../shared/template
+
+block content
+  h1= building.name
+
+  button#create-room Create Room
+
+  div
+    h2 Add a floor
+    select#floors
+      option Select A Floor
+      each floor in floors
+        option(data-img=floor.photo, value=floor._id)= floor.name
+
+  ul
+    li x: #{building.x}
+    li y: #{building.y}
+    li locationId: #{building.locationId}
+    li userId: #{building.userId}
+    li rooms: #{building.rooms}
+    li
+      each location in locations
+        if(location._id.toString() === building.locationId.toString())
+          - var totalCost = parseInt(location.rate) * (parseInt(building.x) * parseInt(building.y))
+          each room in building.rooms
+            each floor in floors
+              if(floor._id.toString() === room.floorId.toString())
+              - totalCost += parseInt(floor.rate) * ((parseInt(room.end.x) - parseInt(room.begin.x)) * (parseInt(room.end.y) - parseInt(room.begin.y)))
+          p $#{totalCost}
+
+    table#building
+      tbody
+        - for(var y = 0; y < parseInt(building.y); y++)
+          tr
+            - for(var x = 0; x < parseInt(building.x); x++)
+              td(data-id='#{x}, #{y}')

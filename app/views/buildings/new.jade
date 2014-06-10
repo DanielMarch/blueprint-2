@@ -1,0 +1,13 @@
+extends ../shared/template
+
+block content
+  h1 #{user.email}
+
+  form(action='/buildings', method='post')
+    input(name='name', type='text', placeholder='Name')
+    input(name='x', type='number', placeholder='X')
+    input(name='y', type='number', placeholder='Y')
+    select(name='locationId')
+      each location in locations
+        option(value=location._id) #{location.name}
+    button Create Building
